@@ -13,7 +13,9 @@ function WatchMovie(props) {
         </SecondaryTitle>
         <SecondaryTitle>Have fun watching your favorite movies!</SecondaryTitle>
         <Button>
-          <a href={url}>Watch here!</a>
+          <a href={url} target="_blank">
+            Watch here!
+          </a>
         </Button>
       </Container>
     </>

@@ -2956,7 +2956,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/Logo/Logo":"fPzMq","./components/MoviesCard/Movies":"7T3TK","./styles/global":"3V5dq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles/ContainerStyle":"dZfCi","./components/Footer/Footer":"Sm3O5"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/Logo/Logo":"fPzMq","./components/MoviesCard/Movies":"7T3TK","./components/Footer/Footer":"Sm3O5","./styles/global":"3V5dq","./styles/ContainerStyle":"dZfCi","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
 
@@ -27182,7 +27182,7 @@ $RefreshReg$(_c, "Logo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../../utils/assets/logo.svg":"3Q6rw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles.js":"iro3K"}],"3Q6rw":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","../../utils/assets/logo.svg":"3Q6rw","./styles.js":"iro3K","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3Q6rw":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "logo.35872473.svg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -27219,171 +27219,7 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("react-refresh/runtime");
-function debounce(func, delay) {
-    var args;
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + " %exports% " + key);
-    }
-}
-
-},{"react-refresh/runtime":"786KC"}],"iro3K":[function(require,module,exports) {
+},{}],"iro3K":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Container", ()=>Container);
@@ -28941,7 +28777,37 @@ function stylis_min(W) {
 }
 exports.default = stylis_min;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"pVndT":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"pVndT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var unitlessKeys = {
@@ -29262,7 +29128,141 @@ module.exports = require("./cjs/react-is.development.js");
     exports.typeOf = typeOf;
 })();
 
-},{}],"7T3TK":[function(require,module,exports) {
+},{}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("react-refresh/runtime");
+function debounce(func, delay) {
+    var args;
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + " %exports% " + key);
+    }
+}
+
+},{"react-refresh/runtime":"786KC"}],"7T3TK":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$d6e0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29347,7 +29347,7 @@ $RefreshReg$(_c, "Movies");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Card/Card":"kucXL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utils/movies.js":"6UHEu","../Question/Question.jsx":"cXNSG","../../utils/questions.js":"6jW2t","../WatchMovie/WatchMovie.jsx":"f7BjD","./styles.js":"3n2pU"}],"kucXL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Card/Card":"kucXL","../../utils/movies.js":"6UHEu","../Question/Question.jsx":"cXNSG","../../utils/questions.js":"6jW2t","../WatchMovie/WatchMovie.jsx":"f7BjD","./styles.js":"3n2pU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kucXL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$40f7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29380,7 +29380,7 @@ $RefreshReg$(_c, "Card");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles.js":"DCt9L"}],"DCt9L":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./styles.js":"DCt9L","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"DCt9L":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "CardImage", ()=>CardImage);
@@ -29731,7 +29731,7 @@ const movies = [
     }
 ];
 
-},{"./assets/batman.svg":"cV575","./assets/blonde.svg":"7NOSF","./assets/bullettrain.svg":"1AbCj","./assets/flash.svg":"3jH0J","./assets/minions.svg":"ersLS","./assets/spiderman.svg":"aHiZt","./assets/the-gray-man.svg":"anT4R","./assets/thor.svg":"lPVYo","./assets/topgun.svg":"6eEH8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./assets/BlackPanther.jpg":"bMmyD","./assets/theGodfather.jpg":"g7xCp","./assets/purpleHearts.jpg":"lOtud","./assets/up.jpg":"9NzTi","./assets/lord.jpeg":"iLduK","./assets/maleficient.webp":"hppDj","./assets/insideout.jpeg":"fjqH6","./assets/inception.jpeg":"k0I9z","./assets/thematrix.jpeg":"12H1P","./assets/schindlerslist.jpeg":"03iiz","./assets/starwarsv.jpeg":"9011k","./assets/memento.jpg":"9iLW0","./assets/amelie.jpg":"75too","./assets/coco.webp":"6lmam","./assets/fightclub.jpeg":"isxo1","./assets/forrestgump.jpg":"9xi0d","./assets/hacksawridge.jpg":"7zMtp","./assets/harrypotter.jpeg":"8GEHg","./assets/interstellar.jpeg":"3vDih","./assets/intothewild.jpg":"dWVza","./assets/joker.jpeg":"iwO2o","./assets/pulpfiction.jpeg":"5VQr1","./assets/walle.jpeg":"4w3Kq","./assets/wizard.jpeg":"csl4f","./assets/vendetta.jpg":"8SpDA","./assets/lionking.webp":"1Pr2C","./assets/toystory.jpeg":"8bkYF","./assets/shutterisland.jpg":"6Wvx8","./assets/Ratatouille.webp":"6PN9c"}],"cV575":[function(require,module,exports) {
+},{"./assets/batman.svg":"cV575","./assets/blonde.svg":"7NOSF","./assets/bullettrain.svg":"1AbCj","./assets/flash.svg":"3jH0J","./assets/minions.svg":"ersLS","./assets/spiderman.svg":"aHiZt","./assets/the-gray-man.svg":"anT4R","./assets/thor.svg":"lPVYo","./assets/topgun.svg":"6eEH8","./assets/BlackPanther.jpg":"bMmyD","./assets/theGodfather.jpg":"g7xCp","./assets/purpleHearts.jpg":"lOtud","./assets/lord.jpeg":"iLduK","./assets/up.jpg":"9NzTi","./assets/toystory.jpeg":"8bkYF","./assets/joker.jpeg":"iwO2o","./assets/memento.jpg":"9iLW0","./assets/amelie.jpg":"75too","./assets/coco.webp":"6lmam","./assets/fightclub.jpeg":"isxo1","./assets/forrestgump.jpg":"9xi0d","./assets/hacksawridge.jpg":"7zMtp","./assets/harrypotter.jpeg":"8GEHg","./assets/interstellar.jpeg":"3vDih","./assets/intothewild.jpg":"dWVza","./assets/lionking.webp":"1Pr2C","./assets/pulpfiction.jpeg":"5VQr1","./assets/walle.jpeg":"4w3Kq","./assets/wizard.jpeg":"csl4f","./assets/shutterisland.jpg":"6Wvx8","./assets/vendetta.jpg":"8SpDA","./assets/maleficient.webp":"hppDj","./assets/insideout.jpeg":"fjqH6","./assets/inception.jpeg":"k0I9z","./assets/thematrix.jpeg":"12H1P","./assets/schindlerslist.jpeg":"03iiz","./assets/starwarsv.jpeg":"9011k","./assets/Ratatouille.webp":"6PN9c","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cV575":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "batman.bfd954f2.svg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"7NOSF":[function(require,module,exports) {
@@ -29767,29 +29767,17 @@ module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "theGod
 },{"./helpers/bundle-url":"lgJ39"}],"lOtud":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "purpleHearts.e97aad5c.jpg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"9NzTi":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "up.0de05806.jpg" + "?" + Date.now();
-
 },{"./helpers/bundle-url":"lgJ39"}],"iLduK":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "lord.a3f5435c.jpeg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"hppDj":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "maleficient.3fe49812.webp" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"9NzTi":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "up.0de05806.jpg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"fjqH6":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "insideout.abe5f3f8.jpeg" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"8bkYF":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "toystory.24682131.jpeg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"k0I9z":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "inception.de5efbe5.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"12H1P":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "thematrix.f2b40913.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"03iiz":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "schindlerslist.ede154e6.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"9011k":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "starwarsv.f37fff54.jpeg" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"iwO2o":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "joker.b9cb45df.jpeg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"9iLW0":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "memento.113aa94f.jpg" + "?" + Date.now();
@@ -29818,8 +29806,8 @@ module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "inters
 },{"./helpers/bundle-url":"lgJ39"}],"dWVza":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "intothewild.082bdc61.jpg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"iwO2o":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "joker.b9cb45df.jpeg" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"1Pr2C":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "lionking.398e15ac.webp" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"5VQr1":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "pulpfiction.8e51e7bf.jpeg" + "?" + Date.now();
@@ -29830,17 +29818,29 @@ module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "walle.
 },{"./helpers/bundle-url":"lgJ39"}],"csl4f":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "wizard.17ecd7af.jpeg" + "?" + Date.now();
 
+},{"./helpers/bundle-url":"lgJ39"}],"6Wvx8":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "shutterisland.40f98508.jpg" + "?" + Date.now();
+
 },{"./helpers/bundle-url":"lgJ39"}],"8SpDA":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "vendetta.a22e47f7.jpg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"1Pr2C":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "lionking.398e15ac.webp" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"hppDj":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "maleficient.3fe49812.webp" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"8bkYF":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "toystory.24682131.jpeg" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"fjqH6":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "insideout.abe5f3f8.jpeg" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"6Wvx8":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "shutterisland.40f98508.jpg" + "?" + Date.now();
+},{"./helpers/bundle-url":"lgJ39"}],"k0I9z":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "inception.de5efbe5.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"12H1P":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "thematrix.f2b40913.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"03iiz":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "schindlerslist.ede154e6.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"9011k":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "starwarsv.f37fff54.jpeg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"6PN9c":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "Ratatouille.3414d93a.webp" + "?" + Date.now();
@@ -29931,7 +29931,7 @@ $RefreshReg$(_c, "Question");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles.js":"jFUgW"}],"jFUgW":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./styles.js":"jFUgW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jFUgW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Container", ()=>Container);
@@ -30046,6 +30046,7 @@ function WatchMovie(props) {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.Button), {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                         href: url,
+                        target: "_blank",
                         children: "Watch here!"
                     }, void 0, false, {
                         fileName: "src/components/WatchMovie/WatchMovie.jsx",
@@ -30074,7 +30075,7 @@ $RefreshReg$(_c, "WatchMovie");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"bvlR9"}],"bvlR9":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./styles":"bvlR9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bvlR9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Container", ()=>Container);
@@ -30143,50 +30144,7 @@ const CardContainer = (0, _styledComponentsDefault.default).div`
   gap: 28px;
 `;
 
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3V5dq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GlobalStyle", ()=>GlobalStyle);
-var _styledComponents = require("styled-components");
-const GlobalStyle = (0, _styledComponents.createGlobalStyle)`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Roboto", sans-serif;
-  }
-`;
-
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dZfCi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Container", ()=>Container);
-var _styledComponents = require("styled-components");
-var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-var _backgroundSvg = require("../utils/assets/background.svg");
-var _backgroundSvgDefault = parcelHelpers.interopDefault(_backgroundSvg);
-const Container = (0, _styledComponentsDefault.default).main`
-  background-image: linear-gradient(
-      109.6deg,
-      rgba(49, 46, 46, 0.882) 100%,
-      rgb(63, 61, 61) 100%
-    ),
-    url(${(0, _backgroundSvgDefault.default)});
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../utils/assets/background.svg":"f1NBj"}],"f1NBj":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "background.0a619717.svg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"Sm3O5":[function(require,module,exports) {
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Sm3O5":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5b81 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30235,7 +30193,7 @@ $RefreshReg$(_c, "Footer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./styles.js":"gYOZW"}],"gYOZW":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./styles.js":"gYOZW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gYOZW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Container", ()=>Container);
@@ -30256,6 +30214,49 @@ const FooterLink = (0, _styledComponentsDefault.default).a`
   color: #ffffff;
 `;
 
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","jVvJi","d8Dch"], "d8Dch", "parcelRequire872a")
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3V5dq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GlobalStyle", ()=>GlobalStyle);
+var _styledComponents = require("styled-components");
+const GlobalStyle = (0, _styledComponents.createGlobalStyle)`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dZfCi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Container", ()=>Container);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+var _backgroundSvg = require("../utils/assets/background.svg");
+var _backgroundSvgDefault = parcelHelpers.interopDefault(_backgroundSvg);
+const Container = (0, _styledComponentsDefault.default).main`
+  background-image: linear-gradient(
+      109.6deg,
+      rgba(49, 46, 46, 0.882) 100%,
+      rgb(63, 61, 61) 100%
+    ),
+    url(${(0, _backgroundSvgDefault.default)});
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+},{"styled-components":"1U3k6","../utils/assets/background.svg":"f1NBj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f1NBj":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("byUka") + "background.0a619717.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}]},["1xC6H","jVvJi","d8Dch"], "d8Dch", "parcelRequire872a")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
